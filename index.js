@@ -26,6 +26,11 @@ app.get("/food/:category", foodHandler.getFoodByCategory);
 app.put("/food/:id", foodHandler.updateFood);
 app.delete("/food/:id", foodHandler.deleteFood);
 
-
+//API Order
+app.post("/order", orderHandler.addOrder);
+app.get("/order", orderHandler.getOrder);
+app.get("/order/:userID", orderHandler.getOrderByUser);
+app.put("/order/:id", orderHandler.updateOrder);
+app.delete("/order/:id", orderHandler.deleteOrder);
 
 app.listen(3000, () => console.log("Server running on port 3000"));
