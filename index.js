@@ -18,6 +18,13 @@ app.post("/user/login", userHandler.login);
 app.get("/user/:id", userHandler.getUserById);
 app.put("/user/upload/change/:id", userHandler.changeProfileImage);
 
+//API Food
+app.post("/food/upload", foodHandler.uploadFoodImage);
+app.post("/food", foodHandler.addFood);
+app.get("/food", foodHandler.getFood);
+app.get("/food/:category", foodHandler.getFoodByCategory);
+app.put("/food/:id", foodHandler.updateFood);
+app.delete("/food/:id", foodHandler.deleteFood);
 
 
 
