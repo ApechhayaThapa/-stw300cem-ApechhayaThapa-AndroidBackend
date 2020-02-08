@@ -52,6 +52,45 @@ function register(req, res) {
     .catch(err => res.json({ status: false, message: err.message }));
 }
 
+function login(req, res) {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  knex("user")
+    .select()
+    .where({ email, password })
+    .then(data => {
+      if (data.length > 0) {
+        res.json({
+          status: true,
+          message: "Login Success.",
+          userId: data[0].id,
+          userType: data[0].userType
+        });
+      } else {
+        res.json({
+          status: false,
+          message: "Username or password does not match."
+        });
+      }
+    })
+    .catch(err => res.json({ status: false, message: err.message }));
+}
+
+function getUserById(req, res) {
+  const id = req.params.id;
+  knex("user")
+    .select()
+    .where({ id })
+    .then(data => {
+      if (data.length > 0) {
+        res.json({ status: true, message: "Data Available", data: data[0] });
+      } else {
+        res.json({ status: false, message: "No data found." });
+      }
+    })
+    .catch(err => res.json({ status: false, message: err.message }));
+}
 
 module.exports = {
   uploadProfileImage,
