@@ -51,7 +51,12 @@ function deleteFood(req, res) {
     .catch(err => res.json({ status: false, message: err.message }));
 }
 
-
+function updateFood(req, res) {
+  const name = req.body.name;
+  const category = req.body.category;
+  const price = req.body.price;
+  const image = req.body.image;
+  const id = req.params.id;
 
   knex("food")
     .update({ name, category, price, image })
