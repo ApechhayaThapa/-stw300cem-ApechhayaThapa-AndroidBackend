@@ -92,6 +92,16 @@ function getUserById(req, res) {
     .catch(err => res.json({ status: false, message: err.message }));
 }
 
+function changeProfileImage(req, res) {
+  const profileImage = req.body.profileImage;
+  const id = req.params.id;
+  knex("user")
+    .update({ profileImage })
+    .where({ id })
+    .then(() => res.json({ status: true, message: "Profile Image Updated!!!" }))
+    .catch(err => res.json({ status: false, message: err.message }));
+}
+
 module.exports = {
   uploadProfileImage,
   register,
