@@ -13,6 +13,21 @@ const storage = multer.diskStorage({
   }
 });
 
+const upload = multer({ storage }).single("foodImage");
+
+const uploadFoodImage = (req, res) => {
+  upload(req, res, err => {
+    if (err) {
+      res.json({ status: false, message: err.message });
+    } else {
+      res.json({
+        status: true,
+        message: "Image Uploaded",
+        data: req.file.filename
+      });
+    }
+  });
+};
 
 function addFood(req, res) {
   const name = req.body.name;
