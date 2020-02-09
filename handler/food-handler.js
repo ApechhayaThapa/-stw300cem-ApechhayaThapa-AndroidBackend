@@ -42,7 +42,14 @@ function getFoodByCategory(req, res) {
     .catch(err => res.json({ status: false, message: err.message }));
 }
 
-
+function deleteFood(req, res) {
+  const id = req.params.id;
+  knex("food")
+    .delete()
+    .where({ id })
+    .then(() => res.json({ status: true, message: "Food deleted!!!" }))
+    .catch(err => res.json({ status: false, message: err.message }));
+}
 
 
 
