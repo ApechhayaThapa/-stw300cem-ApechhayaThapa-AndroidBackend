@@ -17,6 +17,15 @@ function addOrder(req, res) {
 
 
 
+function updateOrder(req, res) {
+  const foodID = req.body.foodID;
+  const foodName = req.body.foodName;
+  const foodImage = req.body.foodImage;
+  const userID = req.body.userID;
+  const quantity = req.body.quantity;
+  const isDelivered = req.body.isDelivered;
+  const id = req.params.id;
+
   knex("order")
     .update({ foodID, foodName, foodImage, userID, quantity, isDelivered })
     .where({ id })
