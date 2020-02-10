@@ -24,6 +24,15 @@ function addOrder(req, res) {
     .catch(err => res.json({ status: false, message: err.message }));
 }
 
+function deleteOrder(req, res) {
+  const id = req.params.id;
+  knex("order")
+    .delete()
+    .where({ id })
+    .then(() => res.json({ status: true, message: "Order deleted!!!" }))
+    .catch(err => res.json({ status: false, message: err.message }));
+}
+
 module.exports = {
   addOrder,
   getOrder,
