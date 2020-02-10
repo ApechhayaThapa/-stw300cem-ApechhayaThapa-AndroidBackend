@@ -16,6 +16,14 @@ function addOrder(req, res) {
 }
 
 
+function getOrderByUser(req, res) {
+  const userID = req.params.userID;
+  knex("order")
+    .select()
+    .where({ userID })
+    .then(data => res.json({ status: true, message: "Data available.", data }))
+    .catch(err => res.json({ status: false, message: err.message }));
+}
 
 function updateOrder(req, res) {
   const foodID = req.body.foodID;
