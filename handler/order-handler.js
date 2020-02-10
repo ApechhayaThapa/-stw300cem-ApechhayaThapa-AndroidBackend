@@ -15,6 +15,12 @@ function addOrder(req, res) {
     .catch(err => res.json({ status: false, message: err.message }));
 }
 
+function getOrder(req, res) {
+  knex("order")
+    .select()
+    .then(data => res.json({ status: true, message: "Data available.", data }))
+    .catch(err => res.json({ status: false, message: err.message }));
+}
 
 function getOrderByUser(req, res) {
   const userID = req.params.userID;
