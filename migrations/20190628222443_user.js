@@ -7,7 +7,9 @@ exports.up = async function(knex, Promise) {
       table.string("email"),
       table.string("password"),
       table.string("phone"),
-
+      table.string("address"),
+      table.string("profileImage");
+    table.string("userType");
   });
 };
 
