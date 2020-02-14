@@ -5,6 +5,9 @@ exports.up = async function(knex, Promise) {
     table.increments("id").primary(),
       table.integer("foodID"),
       table.integer("userID"),
+      table.string("foodName"),
+      table.string("foodImage"),
+      table.integer("quantity"),
       table.string("isDelivered");
   });
 };
